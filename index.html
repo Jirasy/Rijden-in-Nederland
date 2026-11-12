@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#21468b">
+<meta name="mobile-web-app-capable" content="yes">
+<title>Rijden in Nederland – Game Mengemudi 3D</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<canvas id="c"></canvas>
+<button id="menuBtn" aria-expanded="false" aria-controls="panel">Menu</button>
+<div id="panel">
+  <div class="flag"></div>
+  <h1>Rijden in Nederland</h1>
+  <p class="sub">Berkendara di polder, lewat kincir angin dan jalur sepeda merah.</p>
+  <div class="lbl">Mode kemudi</div>
+  <div class="seg"><button id="bM" class="on">Manual</button><button id="bA">Otomatis</button></div>
+  <div class="lbl">Warna mobil</div>
+  <div id="sw"></div>
+  <div class="lbl">Kamera</div>
+  <button id="bC" class="wide">Belakang</button>
+  <div class="lbl">Kualitas grafis</div>
+  <div class="seg" id="qual"></div>
+  <button id="fsBtn" class="wide" style="margin-top:10px">Layar penuh</button>
+  <ul class="keys">
+    <li><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> atau tombol panah</li>
+    <li><kbd>Spasi</kbd> rem tangan</li>
+    <li><kbd>M</kbd> mode <kbd>V</kbd> kamera <kbd>C</kbd> warna</li>
+    <li>Gamepad: stik kiri, R2 gas, L2 rem</li>
+  </ul>
+</div>
+<div id="limit" aria-label="Batas kecepatan 80">80</div>
+<div id="quick"><button id="qA">Otomatis</button><button id="qC">Kamera</button></div>
+<div id="hud"><b id="kmh">0</b><span>km/u</span><em id="modeTxt">Manual</em></div>
+<div id="hint" role="status"></div>
+<div id="touch">
+  <div><button data-k="left" aria-label="Belok kiri">&#9664;</button><button data-k="right" aria-label="Belok kanan">&#9654;</button></div>
+  <div><button data-k="down" aria-label="Rem">Rem</button><button data-k="up" aria-label="Gas">Gas</button></div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="js/setup.js"></script>
+<script src="js/world.js"></script>
+<script src="js/car.js"></script>
+<script src="js/game.js"></script>
+<script src="js/ui.js"></script>
+</body>
+</html>
