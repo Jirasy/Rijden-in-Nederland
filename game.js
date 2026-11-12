@@ -8,7 +8,7 @@ function step(dt){
  const dist=Math.sqrt(bd);
  if(st.auto){ /* autopilot: ikuti jalur kanan, kurangi gas di tikungan */
   const t=at(best+6+Math.round(Math.abs(st.v)*.55),-2.2),df=wrap(Math.atan2(t.x-st.x,t.z-st.z)-st.h);
-  str=cl(df*2.4,-1,1);thr=cl((22-Math.min(9,Math.abs(df)*18)-st.v)*.5,-1,1)
+  str=cl(df*2.4,-1,1);thr=cl((Math.min(22-Math.min(9,Math.abs(df)*18),leadLimit())-st.v)*.5,-1,1)
  }else{thr=(K.up?1:0)-(K.down?1:0);str=(K.left?1:0)-(K.right?1:0);
   const gp=(navigator.getGamepads?navigator.getGamepads():[])[0]; /* gamepad: stik kiri setir, R2 gas, L2 rem, A rem tangan */
   if(gp){const ax=gp.axes[0]||0,bt=i=>gp.buttons[i]?gp.buttons[i].value:0;if(Math.abs(ax)>.12)str=-ax;if(Math.abs(bt(7)-bt(6))>.05)thr=bt(7)-bt(6);pb=bt(0)>.5}}
@@ -18,7 +18,7 @@ function step(dt){
  if(K.brake||pb)st.v*=Math.max(0,1-3*dt);
  st.v=cl(st.v+a*dt,-9,36);if(!thr&&Math.abs(st.v)<.15)st.v=0;
  st.h+=st.steer*1.3*cl(st.v/7,-1,1)/(1+Math.abs(st.v)/20)*dt;
- st.x+=Math.sin(st.h)*st.v*dt;st.z+=Math.cos(st.h)*st.v*dt;
+ st.x+=Math.sin(st.h)*st.v*dt;st.z+=Math.cos(st.h)*st.v*dt;updateTraffic(dt);
  car.position.set(st.x,0,st.z);car.rotation.y=st.h;car.rotation.z=-st.steer*Math.min(1,Math.abs(st.v)/25)*.04;
  wheels.forEach((w,i)=>{w.s.rotation.x+=st.v*dt/.42;if(i<2)w.y.rotation.y=st.steer*.45});
  mills.forEach(m=>m.rotation.z+=dt*.7);

@@ -18,7 +18,7 @@ addEventListener('resize',rs);
 /* Kualitas grafis */
 function applyQuality(i){qi=i;const q=QP[i];prs=q.pr;R.setPixelRatio(prs);rs();sun.castShadow=!!q.sh;
  const m=i>1?1024:512;sun.shadow.mapSize.set(m,m);if(sun.shadow.map){sun.shadow.map.dispose();sun.shadow.map=null}
- cm.count=tk.count=Math.floor(tp.length*q.tr);clouds.forEach((c,j)=>c.visible=j<q.cl);S.fog.far=i?800:600;
+ cm.count=tk.count=Math.floor(tp.length*q.tr);trafficLOD(Math.max(.5,q.tr));clouds.forEach((c,j)=>c.visible=j<q.cl);S.fog.far=i?800:600;
  [...$('qual').children].forEach((b,j)=>b.classList.toggle('on',j===i));try{localStorage.setItem('rin-q',i)}catch(e){}}
 QP.forEach((q,i)=>{const b=document.createElement('button');b.textContent=q.n;b.onclick=()=>applyQuality(i);$('qual').appendChild(b)});
 /* Menu, tombol cepat, layar penuh */

@@ -56,3 +56,4 @@ kbd{font:600 11px Barlow,sans-serif;border:1px solid var(--line);border-bottom-w
 @media (max-height:480px){#kmh{font-size:34px}#hud{min-width:120px;padding:2px 12px 4px}#touch button{width:56px;height:56px}#limit{width:50px;height:50px;border-width:5px;font-size:20px}#quick{top:calc(var(--st) + 68px)}#quick button{min-height:38px}}
 @media (pointer:coarse){#panel{max-height:calc(100% - var(--st) - 160px)}}
 @media (pointer:coarse) and (max-height:480px){#panel{max-height:calc(100% - var(--st) - 130px)}}
+#hud.hit{background:#ae1c28;box-shadow:0 0 0 2px #ae1c28,0 6px 18px rgba(0,0,0,.3)}
